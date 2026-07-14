@@ -1,17 +1,33 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
 
-test('testing my own project', async( {page}) => {
-await page.goto('http://localhost:1234');
-await expect(page).toHaveTitle(/MyFlix/);
+
+test('User can login and see homepage navigation', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+
+    //open login page
+    await loginPage.goto();
+
+    //Login
+    await loginPage.login('testing', 'test');
+
+    //verify text
+    await page.getByRole('link', { name: 'Home' }).highlight();
+
+    // Verify homepage navigation after login
+    await expect(
+        page.getByRole('link', { name: /Home/ })
+    ).toBeVisible();
+
+    await expect(
+        page.getByRole('link', { name: /Profile/ })
+    ).toBeVisible();
+
+    await expect(
+        page.getByRole('button', { name: /Logout/ })
+    ).toBeVisible();
 
 });
-
-
-test('testing page having the login button',  async( { page}) => {
-    await page.goto('http://localhost:1234');
-    await expect(page.getByRole('button', {name: 'Login'})).toBeVisible();
-});
-
 
 
 
