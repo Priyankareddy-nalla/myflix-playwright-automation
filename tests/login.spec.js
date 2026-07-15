@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { HomePage } from '../pages/HomePage';
+import { homedir } from 'os';
 
 
 test('User can login and see homepage navigation', async ({ page }) => {
@@ -11,24 +13,14 @@ test('User can login and see homepage navigation', async ({ page }) => {
     //Login
     await loginPage.login('testing', 'test');
 
-    //verify text
-    await page.getByRole('link', { name: 'Home' }).highlight();
 
-    // Verify homepage navigation after login
-    await expect(
-        page.getByRole('link', { name: /Home/ })
-    ).toBeVisible();
+    const homepage = new HomePage(page);
 
-    await expect(
-        page.getByRole('link', { name: /Profile/ })
-    ).toBeVisible();
+    await homepage.verifyNavigation();
 
-    await expect(
-        page.getByRole('button', { name: /Logout/ })
-    ).toBeVisible();
+    await homepage.searchMovie("Avatar");
+
+
 
 });
-
-
-
 
