@@ -20,15 +20,25 @@ export class HomePage {
 
     };
 
-
+    //Verify Homepage navigation
     async verifyNavigation() {
         await expect(this.homeLink).toBeVisible();
         await expect(this.profileLink).toBeVisible();
         await expect(this.logoutButton).toBeVisible();
     };
 
-
+    //search Movie
     async searchMovie(movieName) {
         await this.searchInput.fill(movieName);
+    };
+
+    //verify Searched movie
+    async verifyMovieVisible(movieTitle) {
+        await expect(
+            this.page.getByText(movieTitle, { exact: true })
+        ).toBeVisible();
+
     }
+
 }
+

@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
-import { homedir } from 'os';
 
 
 test('User can login and see homepage navigation', async ({ page }) => {
@@ -14,12 +13,13 @@ test('User can login and see homepage navigation', async ({ page }) => {
     await loginPage.login('testing', 'test');
 
 
-    const homepage = new HomePage(page);
+    const homePage = new HomePage(page);
 
-    await homepage.verifyNavigation();
+    await homePage.verifyNavigation();
 
-    await homepage.searchMovie("Avatar");
+    await homePage.searchMovie("Avatar");
 
+    await homePage.verifyMovieVisible("Avatar");
 
 
 });
