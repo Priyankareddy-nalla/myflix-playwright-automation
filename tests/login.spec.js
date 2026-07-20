@@ -21,6 +21,10 @@ test('User can login and see homepage navigation', async ({ page }) => {
 
     await homePage.verifyMovieVisible("Avatar");
 
+    await homePage.selectGenre("Drama");
+    // await homePage.clearSearch();
+
+    // await homePage.verifySearchCleared();
 
 });
 

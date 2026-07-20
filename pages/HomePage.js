@@ -17,6 +17,10 @@ export class HomePage {
 
         this.genreDropdown = page.getByRole('button', { name: /Genre/ });
 
+        this.genreButton = page.getByRole('button', { name: 'Genre' });
+
+        this.clearGenreButton = page.locator('svg').nth(2);
+
 
     };
 
@@ -37,8 +41,25 @@ export class HomePage {
         await expect(
             this.page.getByText(movieTitle, { exact: true })
         ).toBeVisible();
+    };
 
+
+
+    //search with genre
+    async selectGenre(genre) {
+        await this.genreButton.click();
+        await this.page.getByRole('button', { name: genre }).click();
     }
+
+    // async clearSearch(){
+    //     await this.clearButton.click();
+    // };
+
+
+    // async verifySearchCleared(){
+    //     await expect(this.searchInput).toHaveValue('');
+    // };
+
 
 }
 
