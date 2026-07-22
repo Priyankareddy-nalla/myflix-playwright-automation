@@ -51,6 +51,12 @@ export class HomePage {
         await this.page.getByRole('button', { name: genre }).click();
     }
 
+
+    async openMovieDetails(){
+        await this.page.getByRole('button',{name: 'See more'}).first().click();
+
+    }
+
     // async clearSearch(){
     //     await this.clearButton.click();
     // };
