@@ -57,6 +57,10 @@ export class HomePage {
 
     }
 
+    async openProfilePage(){
+        await this.profileLink.click();
+    }
+
     // async clearSearch(){
     //     await this.clearButton.click();
     // };
