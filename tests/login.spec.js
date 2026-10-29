@@ -10,7 +10,7 @@ test('User can login and see homepage navigation', async ({ page }) => {
     await loginPage.goto();
 
     //Login
-    await loginPage.login('testing', 'test');
+    await loginPage.login('priyanka', 'Pwd');
 
 
     const homePage = new HomePage(page);
