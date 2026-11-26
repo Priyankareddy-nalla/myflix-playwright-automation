@@ -8,13 +8,13 @@ test('verify the ProfilePage', async ({ page }) => {
     const profilePage = new ProfilePage(page);
     const homePage = new HomePage(page);
     await loginPage.goto();
-    await loginPage.login('priyanka6', 'password6');
+    await loginPage.login('priyanka7', 'password6');
 
     await homePage.openProfilePage();
 
     await profilePage.verifyProfilePage();
 
-    await profilePage.updateProfile('priyanka7', 'password7', 'priyanka@priyanka.com');
+    await profilePage.updateProfile('priyanka8', 'password7', 'priyanka@priyanka.com');
     
 
 });

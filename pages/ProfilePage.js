@@ -31,7 +31,7 @@ export class ProfilePage {
         });
         await this.updateButton.click();
 
-        await expect(this.page.getByText('Username:priyanka7')).toBeVisible();
+        await expect(this.page.getByText(`Username:${newUsername}`)).toBeVisible();
 
     }
 
